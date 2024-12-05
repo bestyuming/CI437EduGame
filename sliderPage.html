@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider Example</title>
+  <style>
+    #slider-container {
+      text-align: center;
+      margin: 20px;
+    }
+    #image-slider {
+      width: 80%;
+      margin: 20px auto;
+    }
+    #image-display img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="slider-container">
+    <input type="range" id="image-slider" min="1" max="2" value="1" step="1" oninput="updateImage(this.value)">
+    <div id="image-display">
+      <img id="slider-image" src="https://illinois.qualtrics.com/ControlPanel/File.php?F=F_Y8pDimhvsSuXJfA" alt="Image 1">
+    </div>
+  </div>
+
+  <script>
+    function updateImage(value) {
+      const image = document.getElementById('slider-image');
+      const imageUrls = {
+        1: "https://illinois.qualtrics.com/ControlPanel/File.php?F=F_Y8pDimhvsSuXJfA",
+        2: "https://illinois.qualtrics.com/ControlPanel/File.php?F=F_58F31drIbFXKf9v"
+      };
+      image.src = imageUrls[value];
+      image.alt = `Image ${value}`;
+    }
+  </script>
+</body>
+</html>
