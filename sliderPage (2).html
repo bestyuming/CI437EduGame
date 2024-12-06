@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #slider-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+        #image-slider {
+            width: 80%;
+            margin: 20px auto;
+        }
+        #image-display img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Image Slider</h1>
+    <div id="slider-container">
+        <input type="range" id="image-slider" min="1" max="700" value="1" step="1" oninput="updateImage(this.value)">
+        <div id="image-display">
+            <img id="slider-image" src="https://illinois.qualtrics.com/ControlPanel/Graphic.php?IM=IM_EGiRrhck3Mn5hhx" alt="Image 1">
+        </div>
+    </div>
+
+    <script>
+        function updateImage(value) {
+            const image = document.getElementById('slider-image');
+            const imageUrls = [
+                "https://illinois.qualtrics.com/ControlPanel/Graphic.php?IM=IM_EGiRrhck3Mn5hhx",
+                "https://illinois.qualtrics.com/ControlPanel/Graphic.php?IM=IM_YeJHtvWd8Zn1QA2",
+                "https://illinois.qualtrics.com/ControlPanel/Graphic.php?IM=IM_EI7CI7jrhxCwzSU",
+                "https://illinois.qualtrics.com/ControlPanel/Graphic.php?IM=IM_hEHbyNDwOoAsXyb",
+                "https://illinois.qualtrics.com/ControlPanel/Graphic.php?IM=IM_AAm4L2qdLhWimUB",
+                "https://illinois.qualtrics.com/ControlPanel/Graphic.php?IM=IM_TWwH2txQcJpaHc3",
+                "https://illinois.qualtrics.com/ControlPanel/Graphic.php?IM=IM_PzXhfTBjcMZncyE"
+            ];
+
+            // Map slider value to the appropriate image index
+            const index = Math.floor((value - 1) / 100); // Map range 1-700 to 0-6
+            image.src = imageUrls[index];
+            image.alt = `Image ${index + 1}`;
+        }
+    </script>
+</body>
+</html>
